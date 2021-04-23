@@ -1,0 +1,14 @@
+#container {display: grid;
+    background-color: grey;
+    margin: 0 auto;
+    height: 50vh;
+    width: 50vh;
+    margin-top: 10vh;
+    padding: 5px 5px;
+    border: solid 1px black; 
+    }
+    .grid-element {
+    background-color: white;
+    
+    border: solid 1px black;
+    }
