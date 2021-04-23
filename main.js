@@ -2,13 +2,15 @@
 const container = document.createElement('div');
 document.body.appendChild(container);
 container.id = 'container';
+const title = document.createElement('h1');
+document.body.insertAdjacentElement('afterbegin', title);
+title.textContent = 'ETCH A SKETCH';
 
-
-
-
-// Set the size when you load the page
+// Start
 getSizeGrid(16);
+clearGridButton();
 
+// set a grid size
 function getSizeGrid(size) {
     let gridSize = size * size;
     document.getElementById('container').style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -21,6 +23,19 @@ function getSizeGrid(size) {
         gridElement.addEventListener('mouseover', setColor);
     }
 }
+// get a random color between white until black
 function setColor(a) {
-    a.target.style.backgroundColor = 'black';
+    const randomColor = Math.floor(Math.random() * 256);
+    a.target.style.backgroundColor = `rgb(${randomColor}, ${randomColor}, ${randomColor})`;
 }
+// Create a button for clear
+function clearGridButton() {
+    const buttonClear = document.createElement('button');
+    buttonClear.id = 'clear-button';
+    buttonClear.textContent = 'clear';
+    container.insertAdjacentElement('beforebegin', buttonClear);
+    buttonClear.addEventListener('click', clearGrid); 
+}
+function clearGrid() {
+    //    need a clear function
+    }
