@@ -25,7 +25,9 @@ function getSizeGrid(size) {
 }
 // get a random color between white until black
 function setColor(a) {
-    const randomColor = Math.floor(Math.random() * 256);
+    // this const set a number between 50 - 150
+    const randomColor = Math.floor(Math.random() * 100 + 50); 
+    console.log(randomColor);
     a.target.style.backgroundColor = `rgb(${randomColor}, ${randomColor}, ${randomColor})`;
 }
 // Create a button for clear
@@ -34,8 +36,11 @@ function clearGridButton() {
     buttonClear.id = 'clear-button';
     buttonClear.textContent = 'clear';
     container.insertAdjacentElement('beforebegin', buttonClear);
-    buttonClear.addEventListener('click', clearGrid); 
+    buttonClear.addEventListener('click', clearGrid, prompt('')); 
 }
 function clearGrid() {
-    //    need a clear function
+    let gridColor = container.querySelectorAll('div');
+    gridColor.forEach(grid => grid.style.backgroundColor = '#fff');
     }
+
+// Create a input area for select the size of the grid
