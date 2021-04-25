@@ -43,6 +43,10 @@ function clearGridButton() {
 function clearGrid() {
     let gridColor = container.querySelectorAll('div');
     gridColor.forEach(grid => grid.style.backgroundColor = '#fff');
+    let reset = Array.from(container.childNodes);;
+        reset.forEach((element) => {
+           container.removeChild(element);
+        })
     }
 
 // Create a input area for select the size of the grid
@@ -53,13 +57,8 @@ function setSize() {
         alert("Enter a number betwenn 1 and 64");
         setSize();
     } else {
-        let reset = Array.from(container.childNodes);;
-        reset.forEach((element) => {
-           container.removeChild(element);
-        })
-
-        getSizeGrid(size);
         clearGrid();
+        getSizeGrid(size);
     
 }
 }
