@@ -13,14 +13,15 @@ clearGridButton();
 // set a grid size
 function getSizeGrid(size) {
     let gridSize = size * size;
-    document.getElementById('container').style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    console.log(size);
+    console.log(gridSize);
     document.getElementById('container').style.gridTemplateRows = `repeat(${size}, 1fr)`;
-    for (i = 1; i <= gridSize; i++) {
+    document.getElementById('container').style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    for (i = 0; i < gridSize; i++) {
         const gridElement = document.createElement('div');
-        gridElement.classList = "grid-element";
         container.appendChild(gridElement);
-        console.log(gridSize);
         gridElement.addEventListener('mouseover', setColor);
+        gridElement.classList = "grid-element";
     }
 }
 // get a random color between white until black
@@ -36,7 +37,8 @@ function clearGridButton() {
     buttonClear.id = 'clear-button';
     buttonClear.textContent = 'clear';
     container.insertAdjacentElement('beforebegin', buttonClear);
-    buttonClear.addEventListener('click', clearGrid, prompt('')); 
+    buttonClear.addEventListener('click', setSize);
+    
 }
 function clearGrid() {
     let gridColor = container.querySelectorAll('div');
@@ -44,3 +46,20 @@ function clearGrid() {
     }
 
 // Create a input area for select the size of the grid
+function setSize() {
+    console.log('set');
+    let size = parseInt(prompt('Select the size of the grid'));
+    if ( size < 1 || size > 64 || Number.isNaN(size)) {
+        alert("Enter a number betwenn 1 and 64");
+        setSize();
+    } else {
+        let reset = Array.from(container.childNodes);;
+        reset.forEach((element) => {
+           container.removeChild(element);
+        })
+
+        getSizeGrid(size);
+        clearGrid();
+    
+}
+}

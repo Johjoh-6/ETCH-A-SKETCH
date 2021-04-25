@@ -14,7 +14,8 @@ body {
     red 40px);
   }
 
-#container {display: grid;
+#container {
+    display: grid;
     background-color: grey;
     margin: 0 auto;
     height: 50vh;
@@ -26,6 +27,8 @@ body {
     .grid-element {
     background-color: #fff;
     border: solid 1px black;
+    height: 100%;
+    width: 100%;
     }
     #clear-button {
         margin: 0 auto;
